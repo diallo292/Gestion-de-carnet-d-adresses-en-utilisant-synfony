@@ -1,0 +1,165 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Carnet d'adresse sous Symfony2{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  {% endblock %}
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link href="navbar.css" rel="stylesheet">
+<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
+<Style>
+ #nav {
+  padding: 0; margin: 0;
+
+  text-align: center; /* centrer le texte */
+}
+#attion{
+  color:#F00;
+}
+#nav li {
+  display: inline;
+  list-style: none;
+
+}
+#nav a {
+  display:inline-block;
+  margin: 0 30px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+#jumb{
+ margin-right:295px;
+  margin-left:227px;
+}
+#navig{ margin-top:20px;
+ margin-right:295px;
+  margin-left:227px;
+}
+
+
+# div formul{
+  margin-left:300px;
+
+  
+}
+body {
+    background: #252525;
+    font-family: 'Open Sans';
+    font-weight: 300;
+}
+.main {
+    background: white url(machine_a_ecrire.jpg) right top no-repeat;
+    background-size: contain;
+    padding: 80px 20px 20px;
+    margin-top: 120px;
+}
+@media only screen and (max-width : 992px) {
+    .main {
+        background: white;
+        margin-top: 30px;
+    }
+}
+h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    color: #555;
+    margin-bottom: 0;
+}
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: #999;
+    font-size: 18px;
+    margin-top: 5px;
+}
+form {
+    margin-top: 20px;
+   margin-right: 0px; 
+}
+input.form-control , input[type="submit"] , .btn {
+    border-radius: 0px;
+}
+.btn {
+    transition: all ease-in-out 0.2s;
+}
+
+h3
+{
+  font-size: 32px;
+  text-shadow: -1px -1px #0c0, 1px 1px #060, -3px 0 4px #000;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #00F;
+  padding:16px;
+  font-weight:lighter;
+  -moz-box-shadow: 2px 2px 6px #888;  
+  -webkit-box-shadow: 2px 2px 6px #888;  
+  box-shadow:2px 2px 6px #888;  
+  text-align:center;
+  display:block;
+  margin-left: 205px;
+    
+}
+#formul {
+
+  margin-left:200px;
+
+  background-image:url(carnet_adresse.jpg);
+
+}
+</Style>
+</head>
+
+<body  >  
+  <div class="container">
+ </br>
+        <nav id="navig" class="navbar navbar-default" >
+
+    <ul id="nav"><!--
+  --><li><a   href="{{ path('hello_the_world')}}">Accueil</a></li><!--
+  --><li><a   href="{{ path('fos_user_security_login')}}">Connexion</a></li><!--
+  --><li><a   href="fos_user_security_logout">Deconnexion</a></li><!--
+  <!--
+  --><li><a href="{{ path('contact')}}">Contact</a></li>
+</ul> </nav>
+<div  class="jumbotron" id="jumb">
+      <h2>  Bienvenue dans la plateforme de gestion de Carnet d'adresses </h2>
+      <p>   
+        Ce plateforme  comme son nom l'indique  vous offre la possibilité de creer votre propre carnet d'adresses en ligne 
+        Ainsi on vous invite de vous inscrire afin de pouvoire Ajouter supprimer vos contacts .
+      .
+      </p>
+    </div>
+
+          <div id="content" class="col-md-9">
+        {% block body %}
+         {% block fos_user_content %}{% endblock %}
+        {% endblock %}
+      </div>
+  </div>
+
+  {% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</body>
+</html>
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    Connecté en tant que {{ app.user.username }}
+    -
+    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+{% else %}
+    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+{% endif %}

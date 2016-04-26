@@ -1,0 +1,35 @@
+{% extends "::Client.html.twig" %}
+
+ {% block body1 %}
+        
+      <div class="well" id="formul1"> 
+<table class="table table-striped"  > 
+
+ <thead> 
+                 <tr> 
+                 <td>Nom</td> 
+                 <td>Prenom</td> 
+                 <td>Adresse</td> 
+                 <td>Annuversaire</td> 
+                 <td>Phone</td> 
+                 </tr> 
+         </thead> 
+
+{%for advert in liste   %}
+  
+  
+                 
+        
+         <tbody> 
+                 <tr id="formul1"> 
+                 <td>{{ advert.getNom()}}</td> 
+                 <td>{{ advert.getPrenom()}}</td> 
+                 <td>{{ advert.getAdresse()}}</td> 
+                 <td>{{ advert.getDate()|date('Y-m-d')}}</td> 
+                 <td>{{ advert.getPhone()}}</td> 
+                 </tr> 
+              {%endfor%}   
+        </tbody> 
+</table>
+</div>
+ {% endblock %}
